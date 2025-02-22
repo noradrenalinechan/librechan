@@ -2,10 +2,10 @@ import uvicorn
 from fastapi import FastAPI
 from sqladmin import Admin
 
-from server.admin.auth import AdminAuth
-from server.admin.views import PostAdmin, CommentAdmin, AdminView
-from server.routes import post, comment, admin_router
-from server.database.database import engine, Base
+from board.admin.auth import AdminAuth
+from board.admin.views import PostAdmin, CommentAdmin, AdminView
+from board.routes import post, comment, admin_router
+from board.database.database import engine, Base
 
 Base.metadata.create_all(bind=engine)
 

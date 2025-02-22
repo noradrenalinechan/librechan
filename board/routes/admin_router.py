@@ -1,14 +1,14 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from server.database.database import get_db
-from server.crud.admin import (
+from board.database.database import get_db
+from board.crud.admin import (
     get_admin_by_id,
     get_all_admins,
     create_admin,
     update_admin,
     delete_admin, get_admin_by_username,
 )
-from server.schemas.admin import AdminCreate, AdminUpdate, Admin
+from board.schemas.admin import AdminCreate, AdminUpdate, Admin
 
 router = APIRouter()
 

@@ -1,7 +1,7 @@
 from fastapi import Request, HTTPException
 from sqladmin.authentication import AuthenticationBackend
-from server.crud.admin import get_admin_by_username, verify_password
-from server.database.database import SessionLocal
+from board.crud.admin import get_admin_by_username, verify_password
+from board.database.database import SessionLocal
 
 class AdminAuth(AuthenticationBackend):
     async def login(self, request: Request) -> bool:

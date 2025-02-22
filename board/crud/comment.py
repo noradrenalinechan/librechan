@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from server.models.comment import Comment
-from server.schemas.comment import CommentCreate
+from board.models.comment import Comment
+from board.schemas.comment import CommentCreate
 
 def create_comment(db: Session, comment: CommentCreate):
     db_comment = Comment(**comment.dict())

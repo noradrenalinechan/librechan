@@ -4,8 +4,8 @@ from sqlalchemy.orm import Session
 from passlib.context import CryptContext
 
 # Импортируйте модель администратора и Base из вашего проекта
-from server.models.admin import Admin
-from server.database.database import Base
+from board.models.admin import Admin
+from board.database.database import Base
 
 # Настройки подключения к базе данных (используйте ваши настройки)
 DATABASE_URL = "sqlite:///./forum.db"  # Пример для SQLite

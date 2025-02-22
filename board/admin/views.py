@@ -1,7 +1,7 @@
 from sqladmin import ModelView
-from server.models.post import Post
-from server.models.comment import Comment
-from server.models.admin import Admin
+from board.models.post import Post
+from board.models.comment import Comment
+from board.models.admin import Admin
 
 class PostAdmin(ModelView, model=Post):
     # Настройки для модели Post
