@@ -1,3 +1,4 @@
+import uvicorn
 from fastapi import FastAPI
 from sqladmin import Admin
 
@@ -19,3 +20,6 @@ admin.add_view(AdminView)
 app.include_router(post.router, prefix="/api")
 app.include_router(comment.router, prefix="/api")
 app.include_router(admin_router.router, prefix="/api")
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="127.0.0.1", port=8000)
