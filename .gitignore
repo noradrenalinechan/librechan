@@ -1,0 +1,63 @@
+# Игнорировать виртуальное окружение
+venv/
+env/
+.venv/
+
+# Игнорировать кэш Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Игнорировать файлы IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Игнорировать файлы журналов и временные файлы
+*.log
+*.sqlite
+*.db
+*.sql
+*.pid
+*.pid.lock
+
+# Игнорировать файлы зависимостей
+*.egg-info/
+dist/
+build/
+*.egg
+*.whl
+
+# Игнорировать файлы конфигурации и среды
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.secrets
+*.ini
+*.cfg
+
+# Игнорировать статические файлы и медиа
+/media/
+/static/
+/uploads/
+
+# Игнорировать файлы операционной системы
+.DS_Store
+Thumbs.db
+
+# Игнорировать Jupyter Notebook
+.ipynb_checkpoints/
+
+# Игнорировать тестовые данные
+/tests/data/
+/tests/output/
+
+# Игнорировать миграции базы данных (если используете Alembic)
+/migrations/
+/alembic.ini
+
+# Игнорировать файлы, специфичные для проекта
+/instance/

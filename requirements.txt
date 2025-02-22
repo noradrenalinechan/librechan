@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+sqlalchemy
+sqladmin
+passlib
+python-dotenv
+markdown
+itsdangerous
+argon2-cffi
