@@ -1,3 +1,4 @@
+import os
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
@@ -8,15 +9,20 @@ from board.models.admin import Admin
 from board.database.database import Base
 
 # Настройки подключения к базе данных (используйте ваши настройки)
-DATABASE_URL = "sqlite:///./forum.db"  # Пример для SQLite
+ENV = os.getenv("ENV", "docker")
+
+if ENV == "local":
+    from server.database.config_local import *
+else:
+    from server.database.config_docker import *
+
+SQLALCHEMY_DATABASE_URL = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"
 
 # Инициализация CryptContext для хэширования паролей
 pwd_context = CryptContext(schemes=["argon2"], deprecated="auto")
 
 def create_admin(username: str, password: str):
-    """
-Создает администратора с хэшированным паролем и добавляет его в базу данных.
-    """
+    """Создает администратора с хэшированным паролем и добавляет его в базу данных."""
     # Хэширование пароля
     hashed_password = pwd_context.hash(password)
 
@@ -24,8 +30,8 @@ def create_admin(username: str, password: str):
     admin = Admin(username=username, hashed_password=hashed_password)
 
     # Подключение к базе данных
-    engine = create_engine(DATABASE_URL)
-    Base.metadata.create_all(bind=engine)  # Создание таблиц, если их нет
+    engine = create_engine(SQLALCHEMY_DATABASE_URL)
+    Base.metadata.create_all(bind=engine)
 
     # Добавление администратора в базу данных
     with Session(engine) as session:
@@ -40,13 +46,9 @@ def create_admin(username: str, password: str):
         print(f"Администратор '{username}' успешно создан.")
 
 if __name__ == "__main__":
-    # Проверка аргументов командной строки
-    if len(sys.argv) != 3:
-        print("Использование: python create_admin.py <username> <password>")
-        sys.exit(1)
-
-    username = sys.argv[1]
-    password = sys.argv[2]
+    # Фиксированные имя и пароль администратора
+    username = "admin"
+    password = "admin"
 
     # Создание администратора
     create_admin(username, password)

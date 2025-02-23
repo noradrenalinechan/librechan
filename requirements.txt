@@ -7,3 +7,4 @@ python-dotenv
 markdown
 itsdangerous
 argon2-cffi
+psycopg2-binary

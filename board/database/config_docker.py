@@ -1,0 +1,5 @@
+POSTGRES_HOST = "db"
+POSTGRES_PORT = "5432"
+POSTGRES_USER = "librechan"
+POSTGRES_PASSWORD = "librechan"
+POSTGRES_DB = "forum"

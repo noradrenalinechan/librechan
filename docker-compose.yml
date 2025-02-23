@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    environment:
+      - ENV=docker
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=librechan
+      - POSTGRES_PASSWORD=librechan
+      - POSTGRES_DB=forum
+    depends_on:
+      - db
+    command: sh -c "python create_admin.py && uvicorn server.main:app --host 0.0.0.0 --port 8000"
+
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: librechan
+      POSTGRES_PASSWORD: librechan
+      POSTGRES_DB: forum
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+
+volumes:
+  postgres_data:
