@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from board.models.post import Post
-from board.schemas.post import PostCreate
+from server.models.post import Post
+from server.schemas.post import PostCreate
 
 def create_post(db: Session, post: PostCreate):
     db_post = Post(**post.dict())

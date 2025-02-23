@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from board.models.admin import Admin
-from board.schemas.admin import AdminCreate, AdminUpdate
+from server.models.admin import Admin
+from server.schemas.admin import AdminCreate, AdminUpdate
 from passlib.context import CryptContext
 
 pwd_context = CryptContext(schemes=["argon2"], deprecated="auto")
